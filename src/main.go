@@ -23,7 +23,7 @@ func get() {
 			return http.ErrUseLastResponse
 		},
 	}
-	website := "https://vperked.online"
+	website := "https://inputwebsite"
 	resp, err := client.Get(website)
 	resp.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.3")
 	if err != nil {
@@ -34,7 +34,7 @@ func get() {
 	fmt.Println("Sending GET requests too:", website, "and it is responding with: ", resp.Status)
 
 	message := Message{
-		Content: resp.Status,
+		Content: website + " " + resp.Status,
 	}
 
 	messageJSON, err := json.Marshal(message)
