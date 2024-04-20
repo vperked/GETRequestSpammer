@@ -1,1 +1,13 @@
-This is made to expand my knowlage in golang.
+
+# HTTP GET Request Spammer
+ 
+ This tool is made to Spam the hell out of GET Requests pretty much, it then sends the websites response code to a discord webhook.
+
+ ## Why did i make this?
+
+ I made this tool to expand my knowledge in the net/http lib and get better at GO in general. If there are any issues or improvements you can recommend please do!
+
+ ## How to use?
+
+ cd into /src and then run go run . and boom your done! Make sure to input a valid domain and dont forget to use https:// or it will give you a error.\
+ 

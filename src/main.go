@@ -43,7 +43,7 @@ func get() {
 		return
 	}
 
-	webhookURL := "https://discord.com/api/webhooks/1231044284464234537/X0U2CoW7jwhnaqrUCiifahbVV9jTm5CAILsyVdP394HXraE5RklbBfVwfmDPHqoaqskz"
+	webhookURL := "https://discord.com/api/webhooks/inputwebhookidhere"
 
 	webhookResp, err := http.Post(webhookURL, "application/json", bytes.NewBuffer(messageJSON))
 	if err != nil {
