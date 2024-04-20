@@ -31,7 +31,7 @@ func get() {
 		return
 	}
 	defer resp.Body.Close()
-	fmt.Println("Spamming and it is responding with: ", resp.Status)
+	fmt.Println("Sending GET requests too:", website, "and it is responding with: ", resp.Status)
 
 	message := Message{
 		Content: resp.Status,
