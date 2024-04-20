@@ -1,13 +1,27 @@
-
 # HTTP GET Request Spammer
- ---
- This tool is made to Spam the hell out of GET Requests pretty much, it then sends the websites response code to a discord webhook.
----
- ## Why did i make this?
----
- I made this tool to expand my knowledge in the net/http lib and get better at GO in general. If there are any issues or improvements you can recommend please do!
----
- ## How to use?
 
- cd into /src and then run go run . and boom your done! Make sure to input a valid domain and dont forget to use https:// or it will give you a error.\
- 
+---
+
+This tool is designed to spam GET requests to a specified website and then send the website's response code to a Discord webhook.
+
+---
+
+## Why Did I Make This?
+
+---
+
+I created this tool to expand my knowledge of the `net/http` library and to improve my skills in Go programming. If you encounter any issues or have suggestions for improvements, please feel free to let me know!
+
+---
+
+## How to Use?
+
+---
+
+To use this tool:
+
+1. Navigate to the `/src` directory.
+2. Run the command `go run .`.
+3. Input a valid domain when prompted. Be sure to include `https://` in the URL to avoid errors.
+
+That's it! You're all set to start spamming GET requests. Remember to use responsibly.
