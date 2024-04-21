@@ -9,7 +9,7 @@ import (
 
 func main() {
 	for i := 0; i < 100; i++ {
-		get()
+		go get()
 	}
 }
 
