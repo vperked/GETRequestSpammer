@@ -1,20 +1,22 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
 	"fmt"
 	"net/http"
+	"sync"
 )
 
+// Where the tom foolery begans.
+
 func main() {
+	wg := sync.WaitGroup{}
 	for i := 0; i < 100; i++ {
 		go get()
+		defer wg.Done()
+		get()
+		wg.Wait()
+		get()
 	}
-}
-
-type Message struct {
-	Content string `json:"content"`
 }
 
 func get() {
@@ -23,33 +25,15 @@ func get() {
 			return http.ErrUseLastResponse
 		},
 	}
-	website := "https://inputwebsite"
+	website := "inputsite"
 	resp, err := client.Get(website)
 	resp.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.3")
+	resp.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Safari/605.1.1")
+	resp.Header.Add("User-Agent", "Mozilla/5.0 (iPhone; CPU iPhone OS 14_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/125.0 Mobile/15E148 Safari/605.1.15")
 	if err != nil {
 		fmt.Println("Could not send the GET Request = ", err)
 		return
 	}
 	defer resp.Body.Close()
 	fmt.Println("Sending GET requests too:", website, "and it is responding with: ", resp.Status)
-
-	message := Message{
-		Content: website + " " + resp.Status,
-	}
-
-	messageJSON, err := json.Marshal(message)
-	if err != nil {
-		fmt.Println("Couldnt marshal message! ", err)
-		return
-	}
-
-	webhookURL := "https://discord.com/api/webhooks/inputwebhookidhere"
-
-	webhookResp, err := http.Post(webhookURL, "application/json", bytes.NewBuffer(messageJSON))
-	if err != nil {
-		fmt.Println("Couldnt send post request!", err)
-		return
-	}
-	defer webhookResp.Body.Close()
-	fmt.Println("Sent message")
 }
