@@ -2,7 +2,7 @@
 
 ---
 
-This tool is designed to spam GET requests to a specified website and then send the website's response code to a Discord webhook.
+This tool is designed to spam GET requests to a specified website and then send the website's response code to the CLI.
 
 ---
 
